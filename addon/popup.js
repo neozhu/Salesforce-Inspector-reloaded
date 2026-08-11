@@ -1497,13 +1497,20 @@ class AllDataBoxUsers extends React.PureComponent {
   async getUserSearchWhereClause(escapedUserQuery) {
     const {userSearchFields, excludeInactiveUsersFromSearch, excludePortalUsersFromSearch} = this.state;
 
-    //start the where clause
     let whereClause = [];
     whereClause.push("(");
     let userSearchWhereClauseFields = [];
-    //concat to search the users using user.Name field
+    const nameParts = escapedUserQuery.split(/\s+/).filter(Boolean);
+    const reversedNameQuery = nameParts.slice().reverse().join(" ");
+
     userSearchFields.forEach(field => {
-      userSearchWhereClauseFields.push(field.name + " LIKE '%" + escapedUserQuery + "%'");
+      if (field.name.toLowerCase() === "name" && nameParts.length > 1) {
+        userSearchWhereClauseFields.push(
+          "(Name LIKE '%" + escapedUserQuery + "%' OR Name LIKE '%" + reversedNameQuery + "%')"
+        );
+      } else {
+        userSearchWhereClauseFields.push(field.name + " LIKE '%" + escapedUserQuery + "%'");
+      }
     });
     whereClause.push(userSearchWhereClauseFields.join(" OR "));
     whereClause.push(")");
