@@ -1502,11 +1502,17 @@ class AllDataBoxUsers extends React.PureComponent {
     let userSearchWhereClauseFields = [];
     const nameParts = escapedUserQuery.split(/\s+/).filter(Boolean);
     const reversedNameQuery = nameParts.slice().reverse().join(" ");
+    const commaSeparatedNameParts = escapedUserQuery.split(",").map(namePart => namePart.trim()).filter(Boolean);
+    const reversedCommaSeparatedNameQuery = commaSeparatedNameParts.slice().reverse().join(" ");
 
     userSearchFields.forEach(field => {
       if (field.name.toLowerCase() === "name" && nameParts.length > 1) {
+        const nameQueries = [escapedUserQuery, reversedNameQuery];
+        if (commaSeparatedNameParts.length > 1) {
+          nameQueries.push(reversedCommaSeparatedNameQuery);
+        }
         userSearchWhereClauseFields.push(
-          "(Name LIKE '%" + escapedUserQuery + "%' OR Name LIKE '%" + reversedNameQuery + "%')"
+          "(" + [...new Set(nameQueries)].map(nameQuery => "Name LIKE '%" + nameQuery + "%'").join(" OR ") + ")"
         );
       } else {
         userSearchWhereClauseFields.push(field.name + " LIKE '%" + escapedUserQuery + "%'");
