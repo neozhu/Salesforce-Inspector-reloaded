@@ -198,7 +198,7 @@ Refer to official documentation for current guidance at https://sfdc.co/slds-plu
      --sds-g-radius-border-4:var(--slds-g-radius-border-4);
      --slds-g-radius-border-4:1.25rem;
      --sds-g-radius-border-pill:var(--slds-g-radius-border-pill);
-     --slds-g-radius-border-pill:15rem;
+     --slds-g-radius-border-pill:0.5rem;
      --sds-g-radius-border-circle:var(--slds-g-radius-border-circle);
      --slds-g-radius-border-circle:100%;
      --sds-g-color-palette-blue-10:var(--slds-g-color-palette-blue-10);
@@ -1092,7 +1092,7 @@ Refer to official documentation for current guidance at https://sfdc.co/slds-plu
      --sds-s-container-sizing-border:var(--slds-s-container-sizing-border);
      --slds-s-container-sizing-border:0;
      --sds-s-container-radius-border:var(--slds-s-container-radius-border);
-     --slds-s-container-radius-border:var(--slds-g-radius-border-4);
+     --slds-s-container-radius-border:var(--slds-g-radius-border-2);
      --sds-s-container-heading-font-color:var(--slds-s-container-heading-font-color);
      --slds-s-container-heading-font-color:var(--slds-g-color-on-surface-3);
      --sds-s-container-heading-font-size:var(--slds-s-container-heading-font-size);
@@ -8332,7 +8332,7 @@ Refer to official documentation for current guidance at https://sfdc.co/slds-plu
    );
    border-radius:var(
      --slds-c-card-radius-border,
-     var(--slds-s-container-radius-border, var(--slds-g-radius-border-2))
+     var(--slds-s-container-radius-border, var(--slds-g-radius-border-1))
    );
    background-clip:padding-box;
    box-shadow:var(--slds-c-card-shadow, var(--slds-s-container-shadow, var(--slds-g-shadow-2)));
@@ -8533,7 +8533,7 @@ Refer to official documentation for current guidance at https://sfdc.co/slds-plu
      );
      border-radius:var(
        --slds-c-card-radius-border,
-       var(--slds-s-container-radius-border, var(--slds-g-radius-border-2))
+       var(--slds-s-container-radius-border, var(--slds-g-radius-border-1))
      );
    }
  
@@ -8597,7 +8597,7 @@ Refer to official documentation for current guidance at https://sfdc.co/slds-plu
      );
      border-radius:var(
        --slds-c-card-radius-border,
-       var(--slds-s-container-radius-border, var(--slds-g-radius-border-2))
+       var(--slds-s-container-radius-border, var(--slds-g-radius-border-1))
      );
    }
  
